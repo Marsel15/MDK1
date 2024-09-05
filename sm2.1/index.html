@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JavaScript Examples</title>
+  <style>
+    #block {
+      width: 100px;
+      height: 100px;
+      background-color: blue;
+      margin: 20px auto;
+      display: block;
+    }
+
+    #block:hover {
+      background-color: red;
+    }
+
+    #details {
+      display: none;
+    }
+
+    #input:focus {
+      background-color: yellow;
+    }
+
+    #link:hover {
+      color: green;
+    }
+
+    #circle {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: blue;
+      margin: 20px auto;
+      display: block;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+ 
+
+  <h2>Задание 1</h2>
+  <button id="button1">Нажми меня</button>
+  <p id="output1"></p>
+
+  <h2>Задание 2</h2>
+  <input type="text" id="input1">
+  <p id="output2"></p>
+
+  <h2>Задание 3</h2>
+  <button id="button2">Первая кнопка</button>
+  <button id="button3">Вторая кнопка</button>
+  <p id="output3"></p>
+
+  <h2>Задание 4</h2>
+  <div id="block"></div>
+
+  <h2>Задание 5</h2>
+  <button id="button4">Показать подробности</button>
+  <button id="button5">Скрыть подробности</button>
+  <div id="details">
+    <p>Это подробности.</p>
+  </div>
+
+  <h2>Задание 6</h2>
+  <input type="text" id="input">
+
+  <h2>Задание 7</h2>
+  <button id="button6">Двойной клик</button>
+
+  <h2>Задание 8</h2>
+  <a href="#" id="link">Ссылка</a>
+
+  <h2>Задание 9</h2>
+  <button id="button7">Увеличить</button>
+  <button id="button8">Уменьшить</button>
+  <div id="size-changer" style="width: 100px; height: 100px; background-color: lightblue; margin: 20px auto; display: block;"></div>
+
+  <h2>Задание 10</h2>
+  <div id="block2" style="width: 100px; height: 100px; background-color: lightblue; margin: 20px auto; display: block;"></div>
+  <p id="key-code"></p>
+
+  <h2>Задание 11</h2>
+  <input type="text" id="input2">
+  <p id="output4"></p>
+
+  <h2>Задание 12</h2>
+  <div id="circle"></div>
+
+  <script>
+    // Задание 1: Кнопка "Hello, World!"
+    const button1 = document.getElementById("button1");
+    const output1 = document.getElementById("output1");
+    button1.addEventListener("click", () => {
+      output1.textContent = "Hello, World!";
+    });
+
+    // Задание 2: Поле ввода с "Enter"
+    const input1 = document.getElementById("input1");
+    const output2 = document.getElementById("output2");
+    input1.addEventListener("keyup", (event) => {
+      if (event.key === "Enter") {
+        output2.textContent = input1.value;
+      }
+    });
+
+    // Задание 3: Две кнопки
+    const button2 = document.getElementById("button2");
+    const button3 = document.getElementById("button3");
+    const output3 = document.getElementById("output3");
+    button2.addEventListener("click", () => {
+      output3.textContent = "Нажата первая кнопка";
+    });
+    button3.addEventListener("click", () => {
+      output3.textContent = "Нажата вторая кнопка";
+    });
+
+    // Задание 4: Блок с изменением цвета
+    const block = document.getElementById("block");
+
+    // Задание 5: Кнопки "Подробности"
+    const button4 = document.getElementById("button4");
+    const button5 = document.getElementById("button5");
+    const details = document.getElementById("details");
+    button4.addEventListener("click", () => {
+      details.style.display = "block";
+    });
+    button5.addEventListener("click", () => {
+      details.style.display = "none";
+    });
+
+    // Задание 6: Поле ввода с фокусом
+    const input = document.getElementById("input");
+
+    // Задание 7: Кнопка с двойным кликом
+    const button6 = document.getElementById("button6");
+    button6.addEventListener("dblclick", () => {
+      alert("Кнопка была дважды нажата");
+    });
+
+    // Задание 8: Ссылка с изменением цвета
+    const link = document.getElementById("link");
+
+    // Задание 9: Кнопки с изменением размера
+    const button7 = document.getElementById("button7");
+    const button8 = document.getElementById("button8");
+    const sizeChanger = document.getElementById("size-changer");
+    button7.addEventListener("click", () => {
+      sizeChanger.style.width = "200px";
+      sizeChanger.style.height = "200px";
+    });
+    button8.addEventListener("click", () => {
+      sizeChanger.style.width = "100px";
+      sizeChanger.style.height = "100px";
+    });
+
+    // Задание 10: Блок с изменением размера по клавишам
+    const block2 = document.getElementById("block2");
+    const keyCodeOutput = document.getElementById("key-code");
+    document.addEventListener("keydown", (event) => {
+      keyCodeOutput.textContent = `Нажата клавиша: ${event.key}`;
+      if (event.key === "w") {
+        block2.style.width = (parseInt(block2.style.width) + 10) + "px";
+        block2.style.height = (parseInt(block2.style.height) + 10) + "px";
+      } else if (event.key === "s") {
+        block2.style.width = (parseInt(block2.style.width) - 10) + "px";
+        block2.style.height = (parseInt(block2.style.height) - 10) + "px";
+      }
+    });
+
+    // Задание 11: Текстовое поле с проверкой ввода
+    const input2 = document.getElementById("input2");
+    const output4 = document.getElementById("output4");
+    input2.addEventListener("keyup", (event) => {
+      if (event.key >= "0" && event.key <= "9") {
+        output4.textContent = "Цифра введена";
+      } else if ((event.key >= "a" && event.key <= "z") || (event.key >= "A" && event.key <= "Z")) {
+        output4.textContent = "Буква введена";
+      }
+    });
+
+    // Задание 12: Круг с изменением цвета
+    const circle = document.getElementById("circle");
+    let isMouseDown = false;
+    circle.addEventListener("mousedown", () => {
+      isMouseDown = true;
+      circle.style.backgroundColor = "green";
+      circle.style.width = "100px";
+      circle.style.height = "100px";
+    });
+    circle.addEventListener("mouseup", () => {
+      isMouseDown = false;
+      circle.style.backgroundColor = "blue";
+      circle.style.width = "50px";
+      circle.style.height = "50px";
+    });
+    circle.addEventListener("mousemove", () => {
+      if (isMouseDown) {
+        circle.style.backgroundColor = "green";
+        circle.style.width = (parseInt(circle.style.width) + 1) + "px";
+        circle.style.height = (parseInt(circle.style.height) + 1) + "px";
+      }
+    });
+  </script>
+
+</body>
+</html>

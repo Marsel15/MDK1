@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JavaScript Examples</title>
+  <style>
+    #square {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+      margin: 20px auto;
+      display: block;
+    }
+
+    #square:hover {
+      background-color: green;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Задание 1: Умножение чисел</h2>
+  <button id="button1">Умножить числа</button>
+
+  <h2>Задание 2: Приветствие</h2>
+  <button id="button2">Показать приветствие</button>
+
+  <h2>Задание 3: Пол человека</h2>
+  <button id="button3">Определить пол</button>
+
+  <h2>Задание 4: День недели</h2>
+  <button id="button4">Показать день недели</button>
+
+  <h2>Задание 5: Вывод чисел с описанием возраста</h2>
+  <button id="button5">Показать числа с возрастом</button>
+
+  <h2>Задание 6: Описание человека</h2>
+  <button id="button6">Показать описание человека</button>
+
+  <h2>Задание 7: Кнопка "Привет"</h2>
+  <button id="button7">Привет</button>
+
+  <h2>Задание 8: Заполнение инпута</h2>
+  <button id="button8">Заполнить</button>
+  <input type="text" id="input1">
+
+  <h2>Задание 9: Проверка инпута</h2>
+  <button id="button9">Проверить</button>
+  <input type="text" id="input2">
+
+  <h2>Задание 10: Блокировка/разблокировка инпута</h2>
+  <button id="button10">Заблокировать</button>
+  <button id="button11">Разблокировать</button>
+  <input type="text" id="input3" disabled>
+
+  <h2>Задание 11: Скрыть/показать квадрат</h2>
+  <div id="square"></div>
+  <button id="button12">Скрыть квадрат</button>
+
+  <script>
+    // Задание 1: Умножение чисел
+    const button1 = document.getElementById("button1");
+    button1.addEventListener("click", () => {
+      const num1 = prompt("Введите первое число:");
+      const num2 = prompt("Введите второе число:");
+      if (isNaN(num1) || isNaN(num2)) {
+        alert("Некорректный ввод чисел");
+      } else {
+        const result = multiplyNumbers(Number(num1), Number(num2));
+        alert(`Результат умножения: ${result}`);
+      }
+    });
+
+    function multiplyNumbers(num1, num2) {
+      return num1 * num2;
+    }
+
+    // Задание 2: Приветствие
+    const button2 = document.getElementById("button2");
+    button2.addEventListener("click", () => {
+      const name = prompt("Введите имя:");
+      const surname = prompt("Введите фамилию:");
+      const age = prompt("Введите возраст:");
+      if (isNaN(age)) {
+        alert("Некорректный ввод возраста");
+      } else {
+        const greeting = getGreeting(name, surname, age);
+        alert(greeting);
+      }
+    });
+
+    function getGreeting(name, surname, age) {
+      return `Привет ${name} ${surname} с возрастом ${age} лет`;
+    }
+
+    // Задание 3: Пол человека
+    const button3 = document.getElementById("button3");
+    button3.addEventListener("click", () => {
+      const gender = prompt("Введите пол ('M', 'F'):");
+      const genderDescription = getGenderDescription(gender);
+      alert(genderDescription);
+    });
+
+    function getGenderDescription(gender) {
+      switch (gender) {
+        case "M":
+          return "Ваш пол мужской";
+        case "F":
+          return "Ваш пол женский";
+        default:
+          return "Ваш пол не определен";
+      }
+    }
+
+    // Задание 4: День недели
+    const button4 = document.getElementById("button4");
+    button4.addEventListener("click", () => {
+      const dayNumber = prompt("Введите число от 1 до 7:");
+      if (isNaN(dayNumber) || dayNumber < 1 || dayNumber > 7) {
+        alert("Некорректный ввод числа");
+      } else {
+        const dayName = getDayName(dayNumber);
+        alert(`День недели: ${dayName}`);
+      }
+    });
+
+    function getDayName(dayNumber) {
+      switch (dayNumber) {
+        case 1:
+          return "Понедельник";
+        case 2:
+          return "Вторник";
+        case 3:
+          return "Среда";
+        case 4:
+          return "Четверг";
+        case 5:
+          return "Пятница";
+        case 6:
+          return "Суббота";
+        case 7:
+          return "Воскресенье";
+      }
+    }
+
+    // Задание 5: Вывод чисел с описанием возраста
+    const button5 = document.getElementById("button5");
+    button5.addEventListener("click", () => {
+      document.write("<h1>Вывод чисел с возрастом</h1>");
+      for (let i = 1; i <= 100; i++) {
+        document.write(`${i} - ${getAgeDescription(i)}<br>`);
+      }
+    });
+
+    function getAgeDescription(age) {
+      if (age <= 17) {
+        return "ребенок";
+      } else if (age <= 30) {
+        return "молодой";
+      } else if (age <= 55) {
+        return "зрелый";
+      } else {
+        return "старый";
+      }
+    }
+
+    // Задание 6: Описание человека
+    const button6 = document.getElementById("button6");
+    button6.addEventListener("click", () => {
+      const name = prompt("Введите имя:");
+      const age = prompt("Введите возраст:");
+      if (isNaN(age)) {
+        alert("Некорректный ввод возраста");
+      } else {
+        const description = describePerson(name, age);
+        alert(description);
+      }
+    });
+
+    function describePerson(name, age) {
+      return `${name} имеет возраст ${age} и он ${getAgeDescription(age)}`;
+    }
+
+    // Задание 7: Кнопка "Привет"
+    const button7 = document.getElementById("button7");
+    button7.addEventListener("click", () => {
+      alert("Привет Мир!");
+    });
+
+    // Задание 8: Заполнение инпута
+    const button8 = document.getElementById("button8");
+    const input1 = document.getElementById("input1");
+    button8.addEventListener("click", () => {
+      input1.value = "test@email.ru";
+    });
+
+    // Задание 9: Проверка инпута
+    const button9 = document.getElementById("button9");
+    const input2 = document.getElementById("input2");
+    button9.addEventListener("click", () => {
+      const inputValue = input2.value;
+      if (inputValue) {
+        alert(`Вы ввели '${inputValue}'`);
+      } else {
+        alert("Вы ничего не ввели в поле");
+      }
+    });
+
+    // Задание 10: Блокировка/разблокировка инпута
+    const button10 = document.getElementById("button10");
+    const button11 = document.getElementById("button11");
+    const input3 = document.getElementById("input3");
+    button10.addEventListener("click", () => {
+      input3.disabled = true;
+    });
+    button11.addEventListener("click", () => {
+      input3.disabled = false;
+    });
+
+    // Задание 11: Скрыть/показать квадрат
+    const square = document.getElementById("square");
+    const button12 = document.getElementById("button12");
+    let isHidden = false;
+    button12.addEventListener("click", () => {
+      if (isHidden) {
+        square.style.display = "block";
+        button12.textContent = "Скрыть квадрат";
+      } else {
+        square.style.display = "none";
+        button12.textContent = "Показать квадрат";
+      }
+      isHidden = !isHidden;
+    });
+  </script>
+
+</body>
+</html>
